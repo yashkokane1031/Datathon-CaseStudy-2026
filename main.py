@@ -18,42 +18,204 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ==================== MINIMAL SAFE CSS ====================
-st.markdown("""
-<style>
-    /* Dark Background */
-    .stApp {
-        background-color: #0E1117;
-    }
-    
-    /* Card Styling for Metrics */
-    div[data-testid="stMetric"] {
-        background-color: #1e2130;
-        border: 1px solid #2b2f3d;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    }
-    
-    /* Sidebar Background */
-    section[data-testid="stSidebar"] {
-        background-color: #161720;
-    }
-    
-    /* Metric text colors */
-    [data-testid="stMetricLabel"] {
-        color: #9CA3AF;
-    }
-    [data-testid="stMetricValue"] {
-        color: #FFFFFF;
-    }
-    
-    /* Headers white */
-    h1, h2, h3 {
-        color: #FFFFFF;
-    }
-</style>
-""", unsafe_allow_html=True)
+# ==================== CYBERPUNK CSS INJECTION ====================
+def apply_custom_style():
+    """
+    Inject Cyberpunk / High-End SaaS CSS Theme
+    Features: Glassmorphism, Gradient Buttons, Neon Effects, Inter Font
+    """
+    st.markdown("""
+    <style>
+        /* Import Google Font - Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        /* Apply Inter Font ONLY to specific text elements - WHITELIST APPROACH */
+        html, body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        p, span, div[class*="paragraph"], 
+        label, [data-testid="stMarkdownContainer"],
+        [data-testid="stText"] {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Streamlit specific text containers */
+        .stMarkdown, .stText, .stCaption {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Only style TEXT buttons, not icon buttons */
+        .stButton > button[kind="primary"],
+        .stButton > button[kind="secondary"] {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* NEVER override these - preserve default fonts for icons */
+        button[kind="icon"],
+        [data-testid="stSidebarCollapsedControl"],
+        [class*="material"],
+        svg, svg * {
+            font-family: inherit !important;
+        }
+        
+        /* Deep Dark Blue/Black Background */
+        .stApp {
+            background-color: #0E1117;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(29, 185, 84, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(30, 215, 96, 0.08) 0px, transparent 50%);
+        }
+        
+        /* Sidebar - Darker Shade with Refined Border */
+        section[data-testid="stSidebar"] {
+            background-color: #11141d;
+            border-right: 1px solid rgba(29, 185, 84, 0.2);
+        }
+        
+        /* Metric Cards - Glassmorphism Effect */
+        div[data-testid="stMetric"] {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+        
+        div[data-testid="stMetric"]:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(29, 185, 84, 0.3);
+        }
+        
+        /* Metric Labels */
+        [data-testid="stMetricLabel"] {
+            color: #9CA3AF;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        /* Metric Values */
+        [data-testid="stMetricValue"] {
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        
+        /* Gradient Text for Main Title */
+        h1 {
+            background: linear-gradient(135deg, #1DB954 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        /* Headers */
+        h2, h3 {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        
+        /* Buttons - Gradient Green with Hover Lift */
+        .stButton>button {
+            background: linear-gradient(135deg, #1DB954 0%, #000000 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+        }
+        
+        .stButton>button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(29, 185, 84, 0.5);
+        }
+        
+        /* Radio Buttons (Navigation) */
+        div[role="radiogroup"] label {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 4px 0;
+            transition: all 0.2s ease;
+        }
+        
+        div[role="radiogroup"] label:hover {
+            background: rgba(29, 185, 84, 0.1);
+        }
+        
+        /* Text Inputs */
+        .stTextInput>div>div>input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
+            color: white;
+            padding: 10px;
+        }
+        
+        /* Sliders */
+        .stSlider>div>div>div {
+            background: linear-gradient(90deg, #1DB954 0%, #1ed760 100%);
+        }
+        
+        /* Dividers */
+        hr {
+            border-color: rgba(29, 185, 84, 0.2);
+        }
+        
+        /* Chat Messages */
+        .stChatMessage {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+        
+        /* Info/Success/Warning Boxes */
+        .stAlert {
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+        }
+        
+        /* FIX SIDEBAR TOGGLE BUTTON */
+        [data-testid="stSidebarCollapsedControl"] {
+            color: #FFFFFF !important;
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        [data-testid="stSidebarCollapsedControl"]:hover {
+            color: #1DB954 !important; /* Spotify Green on Hover */
+            border-color: #1DB954 !important;
+        }
+        
+        /* FORCE SVG ICON VISIBILITY */
+        [data-testid="stSidebarCollapsedControl"] svg {
+            fill: currentColor !important;
+            stroke: currentColor !important;
+        }
+        
+        /* FIX SLIDER LABELS */
+        div[data-testid="stSliderTickBarMin"], div[data-testid="stSliderTickBarMax"] {
+            color: #E0E0E0 !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Apply the custom style immediately
+apply_custom_style()
 
 # ==================== HELPER FUNCTIONS ====================
 @st.cache_data
@@ -78,6 +240,50 @@ lang_to_state = {
     'Assamese': 'Assam'
 }
 
+def display_card(title, value, subtext, color="#1DB954"):
+    """
+    Display a stunning glassmorphic card with colored left-border accent
+    """
+    card_html = f"""
+    <div style="
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-left: 4px solid {color};
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        transition: all 0.3s ease;
+        height: 100%;
+    " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 40px rgba(29, 185, 84, 0.3)';" 
+       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px 0 rgba(0, 0, 0, 0.37)';">
+        <p style="
+            color: #9CA3AF;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        ">{title}</p>
+        <h2 style="
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 8px 0;
+            background: linear-gradient(135deg, {color} 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        ">{value}</h2>
+        <p style="
+            color: #6B7280;
+            font-size: 0.85rem;
+            margin: 8px 0 0 0;
+        ">{subtext}</p>
+    </div>
+    """
+    st.markdown(card_html, unsafe_allow_html=True)
+
 # ==================== DATA LOADING ====================
 @st.cache_data
 def load_data():
@@ -89,7 +295,9 @@ df = load_data()
 
 # ==================== SIDEBAR ====================
 with st.sidebar:
-    st.title("🎵 Spotify Analytics")
+    # Add this at the very top of your sidebar section
+    st.sidebar.image("https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png", width=180)
+    
     st.markdown("---")
     
     # Navigation
@@ -150,9 +358,15 @@ if selected_tab == 'Executive Overview':
     else:
         stream_text = f"{dominant_streams:,.0f} Streams"
     
-    col1.metric("🎵 Total Tracks", f"{total_tracks:,}")
-    col2.metric("⭐ Avg Popularity", f"{avg_popularity:.1f}")
-    col3.metric("🏆 Dominant Language", dominant_language, delta=stream_text)
+    # CUSTOM GLASSMORPHIC CARDS
+    with col1:
+        display_card("🎵 Total Tracks", f"{total_tracks:,}", "Songs in current selection", "#1DB954")
+    
+    with col2:
+        display_card("⭐ Avg Popularity", f"{avg_popularity:.1f}", "Out of 100", "#3B82F6")
+    
+    with col3:
+        display_card("🏆 Dominant Language", dominant_language, stream_text, "#F59E0B")
     
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -177,10 +391,11 @@ if selected_tab == 'Executive Overview':
         
         fig_bar.update_layout(
             height=350,
-            plot_bgcolor='#1e2130',
-            paper_bgcolor='#0E1117',
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(family='Inter', color='#E0E0E0'),
             xaxis=dict(showgrid=False, color='#9CA3AF'),
-            yaxis=dict(showgrid=True, gridcolor='#374151', color='#9CA3AF'),
+            yaxis=dict(showgrid=True, gridcolor='#2d3748', color='#9CA3AF'),
             showlegend=False,
             margin=dict(l=20, r=20, t=20, b=40)
         )
@@ -205,11 +420,12 @@ if selected_tab == 'Executive Overview':
         
         fig_line.update_layout(
             height=350,
-            plot_bgcolor='#1e2130',
-            paper_bgcolor='#0E1117',
-            xaxis=dict(showgrid=True, gridcolor='#374151', color='#9CA3AF'),
-            yaxis=dict(showgrid=True, gridcolor='#374151', color='#9CA3AF'),
-            legend=dict(font=dict(color='#9CA3AF')),
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(family='Inter', color='#E0E0E0'),
+            xaxis=dict(showgrid=True, gridcolor='#2d3748', color='#9CA3AF'),
+            yaxis=dict(showgrid=True, gridcolor='#2d3748', color='#9CA3AF'),
+            legend=dict(font=dict(family='Inter', color='#9CA3AF')),
             margin=dict(l=20, r=20, t=20, b=40)
         )
         
@@ -356,22 +572,24 @@ elif selected_tab == 'Hit DNA':
     
     fig_radar.update_layout(
         polar=dict(
-            bgcolor='rgba(0, 0, 0, 0)',  # Transparent background
+            bgcolor='rgba(0, 0, 0, 0)',
             radialaxis=dict(
                 visible=True,
                 range=[0, 1],
-                gridcolor='#374151',
+                gridcolor='#2d3748',
                 color='#9CA3AF'
             ),
             angularaxis=dict(
-                gridcolor='#374151',
+                gridcolor='#2d3748',
                 color='#9CA3AF'
             )
         ),
         showlegend=True,
-        legend=dict(font=dict(color='#9CA3AF'), orientation='h', yanchor='bottom', y=-0.2),
+        legend=dict(font=dict(family='Inter', color='#9CA3AF'), orientation='h', yanchor='bottom', y=-0.2),
         height=450,
-        paper_bgcolor='rgba(0, 0, 0, 0)',  # Transparent
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(family='Inter', color='#E0E0E0'),
         margin=dict(l=80, r=80, t=20, b=80)
     )
     
@@ -426,20 +644,20 @@ elif selected_tab == 'Hit DNA':
     
     fig_bar.update_layout(
         height=350,
-        paper_bgcolor='#0E1117',
-        plot_bgcolor='#1e2130',
-        font=dict(color='#9CA3AF'),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(family='Inter', color='#E0E0E0'),
         xaxis=dict(
             title='Correlation Coefficient',
             range=[-1, 1],
-            gridcolor='#374151',
+            gridcolor='#2d3748',
             zerolinecolor='#666',
             zerolinewidth=2,
-            tickfont=dict(color='#9CA3AF')
+            tickfont=dict(family='Inter', color='#9CA3AF')
         ),
         yaxis=dict(
             title='',
-            tickfont=dict(color='#FFFFFF', size=12)
+            tickfont=dict(family='Inter', color='#FFFFFF', size=12)
         ),
         margin=dict(l=120, r=40, t=20, b=60),
         showlegend=False
@@ -517,23 +735,41 @@ elif selected_tab == 'Hit DNA':
     input_features = np.array([[danceability_input, energy_input, acousticness_input, liveness_input]])
     predicted_popularity = model.predict(input_features)[0]
     
-    # Display prediction prominently
+    # Display prediction prominently with GLOWING DIGITAL GAUGE
     st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Determine score category and colors
+    if predicted_popularity > 70:
+        glow_color = "#22c55e"  # Neon Green
+        border_glow = "0 0 10px rgba(34, 197, 94, 0.4), 0 0 20px rgba(34, 197, 94, 0.2), 0 0 30px rgba(34, 197, 94, 0.1)"
+        category = "VIRAL HIT"
+        emoji = "🔥"
+    elif predicted_popularity > 40:
+        glow_color = "#f59e0b"  # Gold
+        border_glow = "0 0 10px rgba(245, 158, 11, 0.4), 0 0 20px rgba(245, 158, 11, 0.2), 0 0 30px rgba(245, 158, 11, 0.1)"
+        category = "MODERATE"
+        emoji = "📊"
+    else:
+        glow_color = "#ef4444"  # Red
+        border_glow = "0 0 10px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.2), 0 0 30px rgba(239, 68, 68, 0.1)"
+        category = "NICHE"
+        emoji = "⚠️"
     
     # Create 3 columns for centered display
     pred_col1, pred_col2, pred_col3 = st.columns([1, 2, 1])
     
     with pred_col2:
+        # Build HTML string in compact format for proper rendering
         st.markdown(
             f"""
-            <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                        padding: 30px; 
-                        border-radius: 15px; 
-                        text-align: center;
-                        box-shadow: 0 8px 16px rgba(0,0,0,0.4);'>
-                <h3 style='color: #FFFFFF; margin: 0; font-size: 18px;'>🎯 Predicted Popularity Score</h3>
-                <h1 style='color: #FFFFFF; margin: 10px 0 0 0; font-size: 48px; font-weight: bold;'>{predicted_popularity:.1f}</h1>
-                <p style='color: #E0E0E0; margin: 5px 0 0 0; font-size: 14px;'>out of 100</p>
+            <div style="background: rgba(0, 0, 0, 0.7); border: 2px solid {glow_color}; box-shadow: {border_glow}; padding: 40px; border-radius: 20px; text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, {glow_color}22 0%, transparent 100%); pointer-events: none;"></div>
+                <h3 style="color: {glow_color}; margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; text-shadow: 0 0 10px {glow_color};">{emoji} {category}</h3>
+                <h1 style="color: {glow_color}; margin: 20px 0 10px 0; font-size: 5rem; font-weight: 900; text-shadow: 0 0 20px {glow_color}, 0 0 40px {glow_color};">{predicted_popularity:.1f}</h1>
+                <p style="color: #9CA3AF; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">Predicted Popularity Score</p>
+                <div style="margin-top: 20px; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden;">
+                    <div style="width: {predicted_popularity}%; height: 100%; background: {glow_color}; box-shadow: 0 0 10px {glow_color}; transition: all 0.5s ease;"></div>
+                </div>
             </div>
             """,
             unsafe_allow_html=True
