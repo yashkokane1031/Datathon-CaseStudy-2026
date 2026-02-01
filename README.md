@@ -28,25 +28,27 @@ This dashboard serves as a **Risk Mitigation Engine** for record labels operatin
 
 ---
 
-## ✨ Key Features: The 4-Tab Architecture
+## ✨ Key Features: The 3-Tab Architecture
 
 ### 📊 Tab 1: Executive Overview
 *Market Surveillance at a Glance*
 
-- **Geospatial Heatmaps** — Interactive Folium-powered maps visualizing regional music consumption patterns across India
-- **Temporal Trend Analysis** — Year-over-year performance metrics and seasonal patterns
-- **KPI Dashboard** — Real-time market share, streaming velocity, and engagement metrics
+- **Geospatial Choropleth Maps** — Interactive Plotly-powered maps visualizing regional music consumption patterns across India
+- **Temporal Trend Analysis** — Year-over-year popularity metrics and language performance
+- **KPI Dashboard** — Real-time track counts, popularity scores, and streaming metrics
+- **Songs by Language** — Bar chart showing distribution by language
+- **Popularity Over Time** — Line chart tracking trends across years
 
 ---
 
 ### 🧬 Tab 2: Hit DNA
 *Decoding the Anatomy of a Successful Track*
 
-- **Audio Fingerprinting** — Radar charts dissecting tracks across 8+ audio features (energy, danceability, valence, acousticness, etc.)
-- **Feature Correlation Matrix** — Discover hidden relationships between audio attributes and popularity scores
+- **Audio Fingerprinting** — Radar charts comparing languages across 4 audio features (danceability, energy, acousticness, liveness)
+- **Feature Correlation Analysis** — Discover which audio attributes boost or hurt popularity
 - **🔮 AI Hit Simulator** — A Random Forest Regressor model that predicts hit potential with a stunning **Glowing Gauge** visualization
-  - Adjust sliders for tempo, energy, danceability, and more
-  - Get instant HIT/FLOP predictions with confidence scores
+  - Adjust sliders for danceability, energy, acousticness, and liveness
+  - Get instant HIT/MODERATE/NICHE predictions with scores
   - Neon-animated gauge responds in real-time
 
 ---
@@ -64,30 +66,14 @@ A **rule-based NLP chatbot** designed for precise, hallucination-free responses:
 
 ---
 
-### 📈 Tab 4: Strategy Deck
-*The BCG Matrix for Music*
-
-Strategic portfolio analysis identifying:
-
-| Quadrant | Description | Example |
-|----------|-------------|---------|
-| 🌟 **Stars** | High growth, high market share | Punjabi Pop |
-| 💰 **Cash Cows** | Low growth, high market share | Telugu Film Music |
-| 💎 **Hidden Gems** | High growth, low market share | Odia Regional |
-| ❓ **Question Marks** | Emerging genres requiring investment decisions | Indie Electronic |
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|------------|
 | **Frontend** | Streamlit with Custom CSS (Dark/Glassmorphism UI) |
-| **Data Visualization** | Plotly Interactive Charts, Folium Geospatial Maps |
+| **Data Visualization** | Plotly Interactive Charts (Bar, Line, Radar, Choropleth) |
 | **ML Engine** | Scikit-Learn (Random Forest Regressor) |
-| **NLP** | TextBlob for sentiment analysis |
 | **Data Processing** | Pandas, NumPy |
-| **Network Analysis** | NetworkX |
 
 ---
 
